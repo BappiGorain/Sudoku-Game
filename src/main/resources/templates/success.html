@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sudoku — Completed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-bg': '#0d1117',
+            'dark-panel': '#161b22',
+            'dark-text': '#c9d1d9',
+            'dark-muted': '#8b949e',
+            'dark-grid': '#30363d',
+            'dark-primary': '#1f6feb',
+            'dark-accent': '#2ea043'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="m-0 text-dark-text font-sans min-h-screen" style="background: radial-gradient(1200px 600px at 30% -10%, #0f1530 0%, #0d1117 42%, #0d1117 100%);">
+<header class="p-4">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="m-0 text-xl font-semibold text-gray-100">Sudoku</h1>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto p-6">
+  <div class="bg-dark-panel bg-opacity-85 border border-dark-grid rounded-2xl p-7 mt-3 shadow-2xl backdrop-blur-sm">
+    <div class="text-center mb-6">
+      <div class="text-6xl mb-4">🏆</div>
+      <h2 class="m-0 mb-2 text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+        Congratulations, <span th:text="${playerName}">Player</span>!
+      </h2>
+      <p class="m-0 mb-5 text-dark-muted text-lg">You've successfully solved the puzzle!</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5 my-6">
+      <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-dark-grid rounded-xl p-6 text-center">
+        <div class="text-3xl mb-2">⏱️</div>
+        <label class="block text-xs text-dark-muted mb-2 uppercase tracking-wider font-medium">Completion Time</label>
+        <div class="text-2xl font-bold text-green-400" th:text="${elapsedTime} + ' seconds'">0 seconds</div>
+      </div>
+      <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-dark-grid rounded-xl p-6 text-center">
+        <div class="text-3xl mb-2">✅</div>
+        <label class="block text-xs text-dark-muted mb-2 uppercase tracking-wider font-medium">Status</label>
+        <div class="text-2xl font-bold text-green-400">Perfect Solution</div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="flex flex-wrap gap-3 justify-center mt-6">
+        <a href="/new" class="bg-gradient-to-r from-dark-accent to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-xl font-bold transform hover:-translate-y-1 hover:shadow-xl transition-all duration-200 inline-flex items-center gap-2">
+          <span>🎮</span> Start New Game
+        </a>
+        <a href="/" class="border border-dark-grid bg-dark-panel hover:bg-gray-700 text-dark-text px-6 py-3 rounded-xl font-semibold transform hover:-translate-y-1 hover:shadow-xl transition-all duration-200 inline-flex items-center gap-2">
+          <span>🏠</span> Home
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="p-5 text-dark-muted text-center mt-8">
+  <div class="max-w-4xl mx-auto">
+    <small>🧠 Keep practicing to improve your time and skills!</small>
+  </div>
+</footer>
+</body>
+</html>

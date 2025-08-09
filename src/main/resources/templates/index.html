@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Sudoku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #3b82f6;
+            --accent2: #22c55e;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --danger: #ef4444;
+        }
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(800px circle at 20% 20%, #1e3a8a 0, transparent 60%),
+                        radial-gradient(1000px circle at 80% 80%, #0f172a 0, transparent 60%),
+                        var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: var(--card);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: .95rem;
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px 12px 40px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: #0f172a;
+            color: var(--text);
+            font-size: 1rem;
+        }
+        .form-group::before {
+            content: "👤";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+        }
+        .btn {
+            display: inline-block;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: white;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            width: 100%;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.3);
+        }
+        .instructions {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+        .footer {
+            margin-top: 25px;
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="title">🧩 Sudoku Challenge</div>
+        <div class="subtitle">Test your skills – complete the board in record time!</div>
+        <form action="/start" method="post">
+            <div class="form-group">
+                <input type="text" name="playerName" placeholder="Enter your name" required />
+            </div>
+            <button type="submit" class="btn">🚀 Start Game</button>
+        </form>
+        <div class="instructions">
+            <strong>How to Play:</strong>
+            <ul style="margin-top:6px; padding-left:18px;">
+                <li>Fill every row, column, and 3×3 box with digits 1–9.</li>
+                <li>No repeating digits allowed in any row, column, or box.</li>
+                <li>Wrong numbers will be shown in <span style="color:red">red</span> after you submit.</li>
+                <li>Click "Show Solution" during the game to view the answer.</li>
+            </ul>
+        </div>
+        <div class="footer">
+            &copy; 2025 Sudoku Game • Built with Spring Boot + Thymeleaf
+        </div>
+    </div>
+</body>
+</html>
